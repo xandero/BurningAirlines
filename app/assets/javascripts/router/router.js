@@ -8,7 +8,7 @@ app.AppRouter = Backbone.Router.extend({
   },
 
   index: function () {
-    var flightView = new app.flightView({collection: app.flights});
+    var flightView = new app.FlightView({collection: app.flights});
     flightView.render();
   }
 });

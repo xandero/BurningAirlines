@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.FlightListView = Backbone.View.extend({
-  tagName: 'li', // new PostListView will use this to create a new <li>
+  tagName: 'tr', // new FlightListView will use this to create a new <tr>
   // events: {
   //   'click': 'showPost'
   // },
