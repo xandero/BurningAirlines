@@ -12,6 +12,9 @@ class FlightsController < ApplicationController
   def show
   end
 
+  def search
+  end
+
   # GET /flights/new
   def new
     @flight = Flight.new

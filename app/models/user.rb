@@ -12,4 +12,9 @@
 
 class User < ActiveRecord::Base
   has_many :reservations
+
+  has_secure_password
+     
+  validates :name, :uniqueness => true, :presence => true
+
 end
