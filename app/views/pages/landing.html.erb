@@ -41,3 +41,20 @@
     </form>
   </template>
 
+  <template>
+    <h2>Create Reservation</h2>
+    <%= @flight.flight_num %>
+      <div id="reservationView-template">
+        <% @flight.airplane.row.times do |row| %>
+          <% @flight.airplane.column.times do |column| %>
+            <div class="seat"><%= column %><%= row %></div>
+          <% end %>
+        <% end %>
+      </div>
+  </template>
+
+
+
+
+
+
