@@ -1,0 +1,27 @@
+  <a href="#">Home</a>
+
+  <div id="main"></div>
+
+  <template id="flightView-template">
+    <h2>List of flights</h2>
+    <table>
+      <tr>
+        <th>Flight Number</th>
+        <th>Date</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Seats Available</th>
+      </tr>
+      <div id="table_data"></div>
+    </table>
+  </template>
+
+  <template id="flightListView-template">
+    <tr>
+      <td>{{ flight_num }}</td>
+      <td>{{ date }}</td>
+      <td>{{ origin }}</td>
+      <td>{{ destination }}</td>
+      <td></td>
+    </tr>
+  </template>
