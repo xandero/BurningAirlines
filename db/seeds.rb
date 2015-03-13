@@ -37,3 +37,12 @@ f1.airplane = a1
 f2.airplane = a2
 f3.airplane = a3
 f4.airplane = a4
+
+r1.save
+r2.save
+r3.save
+r4.save
+f1.save
+f2.save
+f3.save
+f4.save

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root :to => 'flights#search'
+  root :to => 'pages#landing'
 
   resources :users
   resources :reservations
