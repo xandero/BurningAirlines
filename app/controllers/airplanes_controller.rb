@@ -7,6 +7,14 @@ class AirplanesController < ApplicationController
     @airplanes = Airplane.all
   end
 
+  def show_json
+    flight = Flight.find params[:flight_id]
+    render :json => flight.airplane
+  end
+  
+  def list_all
+  end
+
   # GET /airplanes/1
   # GET /airplanes/1.json
   def show
@@ -69,6 +77,6 @@ class AirplanesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def airplane_params
-      params.require(:airplane).permit(:name, :row, :column)
+      params.require(:airplane).permit(:name, :row, :column, :flight_id)
     end
 end

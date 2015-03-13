@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   root :to => 'pages#landing'
 
   resources :users
-  resources :reservations
-  resources :flights
   resources :airplanes
+  resources :flights do
+    resources :reservations
+    get '/airplane' => 'airplanes#show_json'
+  end
+
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'

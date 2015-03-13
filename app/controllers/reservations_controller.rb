@@ -4,7 +4,8 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    flight = Flight.find params[:flight_id]
+    render :json => flight.reservations
   end
 
   # GET /reservations/1
