@@ -20,22 +20,22 @@ app.ReservationView = Backbone.View.extend({
     var self = this;
     this.airplane = new app.Airplane({flight_id: this.model.get('id')});
     this.reservations = new app.Reservations({flight_id: this.model.get('id')});
-    debugger;
-    console.log(this.reservations.toJSON());
     this.airplane.fetch().done(function (airplane) { 
-      this.airplane = airplane;
-      console.log(this.airplane);
-      this.reservations.fetch().done(function () {
-      
-        console.log(this.airplane);
+    debugger;
+      self.airplane = airplane;
+      console.log(self.airplane);
+      self.reservations.fetch().done(function (reservations) {
+        self.reservations = reservations;
+        console.log(self.airplane);
+        console.log(self.reservations);
 
-        var rows = this.airplane.row;
-        var columns = this.airplane.column;
+        var rows = self.airplane.row;
+        var columns = self.airplane.column;
         var reservationViewHTML = $('#reservationView-template').html();
         self.$el.html(reservationViewHTML);
-        $('body').append(this.$el);
-        //this.$el.attr('id', 'reservation-view');
-        //$('#content').html(this.el);
+        $('body').append(self.$el);
+        //self.$el.attr('id', 'reservation-view');
+        //$('#content').html(self.el);
         for (var i = 1; i <= rows; i++) {
           for (var j = 1; j <= columns; j++) {
             k = self.numToChar(j);
