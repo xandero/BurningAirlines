@@ -64,13 +64,13 @@ app.ReservationView = Backbone.View.extend({
       var row = $(event.target).attr('data-row');;//take cell ID, split, grab row
       var column = $(event.target).attr('data-column');; //take cell ID,, split, grab column
       var newReservation = new app.Reservation({
-        user_id: '@current_user.id', // user_id hard coded
+        user_id: app.currentUser.toJSON().id, // user_id hard coded
         flight_id: this.model.get('id'),
         seat_row: row,
         seat_column: column
       });
       newReservation.save();
-      // app.reservations.add(newReservation);
+      this.render();
   },
 });
 
