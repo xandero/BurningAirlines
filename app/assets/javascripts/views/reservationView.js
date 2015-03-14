@@ -80,8 +80,9 @@ app.ReservationView = Backbone.View.extend({
 
   deleteReservation: function(row, column, username) {
     // only allow delete if the current user made the booking
-    if username === app.currentUser.toJSON().name {
+    if (username === app.currentUser.toJSON().name) {
       // To figure out how to delete tomorrow
+      // Recall that reservations are stored in this.reservations
       return
     }
   }
