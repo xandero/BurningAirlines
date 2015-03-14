@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/airplane' => 'airplanes#show_json'
   end
 
-
+  get '/current_user' => 'session#current_user'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
