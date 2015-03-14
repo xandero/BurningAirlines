@@ -38,10 +38,17 @@ app.ReservationView = Backbone.View.extend({
         for (var i = 1; i <= rows; i++) {
           for (var j = 1; j <= columns; j++) {
             k = self.numToChar(j);
-            self.$el.find("#airplane").append("<div data-row=\"" + i + "\" data-column=\"" + k + "\">" + i + k + "</div>");
+            self.$el.find("#airplane").append("<div id=" + i + k + " data-row=\"" + i + "\" data-column=\"" + k + "\">" + i + k + "</div>");
           }
           self.$el.find("#airplane").append("<br />");
-        }  
+
+        }
+        for (var i = 0; i < self.reservations.length; i++) {
+          var row = self.reservations[i].seat_row;
+          var column = self.reservations[i].seat_column;
+          $('#' + row + column)
+          
+        };
       });
     });
   },
