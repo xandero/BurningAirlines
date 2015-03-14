@@ -61,10 +61,9 @@ app.ReservationView = Backbone.View.extend({
 
   createReservation: function (event) {
       $(event.target).addClass("reserved");
-      var seat_id = $(event.target).text();
-      alert(seat_id);
-      var row;//take cell ID, split, grab row
-      var column; //take cell ID,, split, grab column
+      var row = $(event.target).attr('data-row');;//take cell ID, split, grab row
+      var column = $(event.target).attr('data-column');; //take cell ID,, split, grab column
+      alert(row + column);
       // var newReservation = new app.Reservation({user_id: @current_user.id, flight_id: @current_flight.id, row: row, column: column});
       // newReservation.save();
       // app.reservations.add(newReservation);
