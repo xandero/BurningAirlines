@@ -60,7 +60,8 @@ app.ReservationView = Backbone.View.extend({
     var column = $(event.target).attr('data-column');  
     
     if ($(event.target).hasClass('reserved')) {
-      this.deleteReservation(row, column);
+      var username = $(event.target).text();
+      this.deleteReservation(row, column, username);
     } else {
       this.makeReservation(row, column);
     }
@@ -77,8 +78,12 @@ app.ReservationView = Backbone.View.extend({
     this.render();
   },
 
-  deleteReservation: function(row, column) {
-    return;
+  deleteReservation: function(row, column, username) {
+    // only allow delete if the current user made the booking
+    if username === app.currentUser.toJSON().name {
+      // To figure out how to delete tomorrow
+      return
+    }
   }
 });
 
