@@ -6,7 +6,7 @@ app.ReservationView = Backbone.View.extend({
   el: '#main', // define the selector which this view is associated with
   
    events: {
-    'click': 'createReservation',
+    'click #airplane': 'createReservation',
   },
 
   initialize: function () {
@@ -62,6 +62,7 @@ app.ReservationView = Backbone.View.extend({
   createReservation: function (event) {
       $(event.target).addClass("reserved");
       var seat_id = $(event.target).text();
+      alert(seat_id);
       var row;//take cell ID, split, grab row
       var column; //take cell ID,, split, grab column
       // var newReservation = new app.Reservation({user_id: @current_user.id, flight_id: @current_flight.id, row: row, column: column});
