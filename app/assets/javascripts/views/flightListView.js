@@ -18,5 +18,7 @@ app.FlightListView = Backbone.View.extend({
   },
   showFlight: function () {
     app.appRouter.navigate('flights/' + this.model.get('id'), true);
+    var reservationView = new app.ReservationView({model: this.model});
+    reservationView.render();
   }
 });
