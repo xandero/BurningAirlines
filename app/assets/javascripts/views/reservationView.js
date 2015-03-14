@@ -25,14 +25,14 @@ app.ReservationView = Backbone.View.extend({
 
       var rows = this.airplane.row;
       console.log(rows);
-      var columns = 20;
+      var columns = this.airplane.column;
       var reservationViewHTML = $('#reservationView-template').html();
       self.$el.html(reservationViewHTML);
       $('body').append(this.$el);
       //this.$el.attr('id', 'reservation-view');
       //$('#content').html(this.el);
-      for (var i = 1; i <= columns; i++) {
-        for (var j = 1; j <= rows; j++) {
+      for (var i = 1; i <= rows; i++) {
+        for (var j = 1; j <= columns; j++) {
           k = self.numToChar(j);
           self.$el.find("#airplane").append("<div data-row=\"" + i + "\" data-column=\"" + k + "\">" + i + k + "</div>");
         }
