@@ -46,7 +46,9 @@ app.ReservationView = Backbone.View.extend({
         for (var i = 0; i < self.reservations.length; i++) {
           var row = self.reservations[i].seat_row;
           var column = self.reservations[i].seat_column;
-          $('#' + row + column)
+          var userID = self.reservations[i].user_id;
+          var userName = app.users.get(userID).toJSON().name;
+          $('#' + row + column).text(userName);
           
         };
       });
