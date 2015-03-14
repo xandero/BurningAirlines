@@ -17,25 +17,26 @@ app.ReservationView = Backbone.View.extend({
   },
 
   render: function () {
-
+    var self = this;
     this.airplane = new app.Airplane({flight_id: this.model.get('id')});
-          console.log(this.airplane.toJSON());
+    this.airplane.fetch().done(function (airplane) { 
+      this.airplane = airplane;
+      console.log(this.airplane);
 
-    this.airplane.fetch().done(function () { 
-      var rows = this.airplane.get('row');
+      var rows = this.airplane.row;
       console.log(rows);
       var columns = 20;
       var reservationViewHTML = $('#reservationView-template').html();
-      this.$el.html(reservationViewHTML);
+      self.$el.html(reservationViewHTML);
       $('body').append(this.$el);
       //this.$el.attr('id', 'reservation-view');
       //$('#content').html(this.el);
       for (var i = 1; i <= columns; i++) {
         for (var j = 1; j <= rows; j++) {
-          k = this.numToChar(j);
-          this.$el.find("#airplane").append("<div data-row=\"" + i + "\" data-column=\"" + k + "\">" + i + k + "</div>");
+          k = self.numToChar(j);
+          self.$el.find("#airplane").append("<div data-row=\"" + i + "\" data-column=\"" + k + "\">" + i + k + "</div>");
         }
-        this.$el.find("#airplane").append("<br />");
+        self.$el.find("#airplane").append("<br />");
       }
     });
   },
