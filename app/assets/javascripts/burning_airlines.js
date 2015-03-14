@@ -2,6 +2,7 @@ var app = app || {};
 
 app.flights = new app.Flights();
 app.users = new app.Users();
+app.currentUser = new app.CurrentUser();
 
 $(document).ready(function() {
   
@@ -16,6 +17,8 @@ $(document).ready(function() {
   };
 
   app.users.fetch();
+
+  app.currentUser.fetch();
 
   app.flights.fetch().done(function () {
       // This is global so we access it inside certain views.
