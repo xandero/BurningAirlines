@@ -1,6 +1,7 @@
 var app = app || {};
 
 app.flights = new app.Flights();
+app.users = new app.Users();
 
 $(document).ready(function() {
   
@@ -13,6 +14,8 @@ $(document).ready(function() {
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   };
+
+  app.users.fetch();
 
   app.flights.fetch().done(function () {
       // This is global so we access it inside certain views.

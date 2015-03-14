@@ -21,7 +21,6 @@ app.ReservationView = Backbone.View.extend({
     this.airplane = new app.Airplane({flight_id: this.model.get('id')});
     this.reservations = new app.Reservations({flight_id: this.model.get('id')});
     this.airplane.fetch().done(function (airplane) { 
-    debugger;
       self.airplane = airplane;
       console.log(self.airplane);
       self.reservations.fetch().done(function (reservations) {
