@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   end
 
   def current_user
-    render :json => User.find(session[:user_id])
+    render :json => (User.find_by :id => session[:user_id])
   end
 
   def create
