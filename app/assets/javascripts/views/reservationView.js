@@ -15,10 +15,10 @@ app.ReservationView = Backbone.View.extend({
     };
     app.currentView = this;
 
-    var self = this
-    setInterval(function(){
-      self.render();
-    },2000);
+    // var self = this
+    // setInterval(function(){
+    //   self.render();
+    // },2000);
   },
 
   render: function () {
