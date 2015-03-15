@@ -21,7 +21,6 @@ class FlightsController < ApplicationController
     
     @flights = find_flights(origin, destination)
     
-
   end
 
   # GET /flights/new
