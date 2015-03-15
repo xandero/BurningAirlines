@@ -5,8 +5,8 @@ Reservation.destroy_all
 
 u1 = User.create(:name => 'Mario', :is_admin => 'true', :password => 'fly', :password_confirmation => 'fly')
 u2 = User.create(:name => 'Xander', :is_admin => 'true', :password => 'fly', :password_confirmation => 'fly')
-u3 = User.create(:name => 'Kim', :password => 'fly', :password_confirmation => 'fly')
-u4 = User.create(:name => 'Kate', :password => 'fly', :password_confirmation => 'fly')
+u3 = User.create(:name => 'Kim', :is_admin => 'false', :password => 'fly', :password_confirmation => 'fly')
+u4 = User.create(:name => 'Kate', :is_admin => 'false', :password => 'fly', :password_confirmation => 'fly')
 
 a1 = Airplane.create(:name => 'Bessie 747', :row => 64, :column => 10)
 a2 = Airplane.create(:name => 'Claudia 767', :row => 55, :column => 7)
