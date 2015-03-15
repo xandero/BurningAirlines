@@ -35,6 +35,8 @@ gem 'haml'
 gem 'handlebars'
 gem 'backbone-on-rails', '~> 1.1.2.0'
 
+gem 'rails_12factor', group: :production
+
 group :development do
  gem 'pry-rails'
  gem 'pry-stack_explorer'
