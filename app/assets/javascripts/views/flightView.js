@@ -5,6 +5,7 @@ var app = app || {};
 app.FlightView = Backbone.View.extend({
   el: '#main', // define the selector which this view is associated with
   render: function () {
+    // Stop the reservationView from refreshing
     clearInterval(app.refreshIntervalId);
 
     var flightViewHTML = $('#flightView-template').html();

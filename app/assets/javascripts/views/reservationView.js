@@ -15,10 +15,7 @@ app.ReservationView = Backbone.View.extend({
     };
     app.currentView = this;
 
-    var self = this
-    app.refreshIntervalId = setInterval(function(){
-      self.render();
-    },5000);
+    this.resetRefreshTimer();
   },
 
   render: function () {
@@ -74,6 +71,8 @@ app.ReservationView = Backbone.View.extend({
     } else {
       this.makeReservation(row, column);
     }
+
+    this.resetRefreshTimer();
   },
 
   makeReservation: function (row, column) {
@@ -96,8 +95,15 @@ app.ReservationView = Backbone.View.extend({
         seat_column: column
       });
       reservation.destroy({success: this.render()});
-      // reservation stored correctly - now need to delete from server
     }
+  },
+
+  resetRefreshTimer: function() {
+    clearInterval(app.refreshIntervalId);
+    var self = this
+    app.refreshIntervalId = setInterval(function(){
+      self.render();
+    },5000);
   }
 });
 
