@@ -85,6 +85,7 @@ app.ReservationView = Backbone.View.extend({
         seat_row: parseInt(row),
         seat_column: column
       });
+      reservation.destroy({success: this.render()});
       // reservation stored correctly - now need to delete from server
     }
   }
