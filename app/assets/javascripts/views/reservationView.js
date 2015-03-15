@@ -23,7 +23,6 @@ app.ReservationView = Backbone.View.extend({
     this.airplane.fetch().done(function (airplane) { 
       self.airplane = airplane;
       self.reservations.fetch().done(function (reservations) {
-        self.reservations = reservations;
 
         var rows = self.airplane.row;
         var columns = self.airplane.column;
@@ -39,10 +38,10 @@ app.ReservationView = Backbone.View.extend({
           self.$el.find("#airplane").append("<br />");
 
         }
-        for (var i = 0; i < self.reservations.length; i++) {
-          var row = self.reservations[i].seat_row;
-          var column = self.reservations[i].seat_column;
-          var userID = self.reservations[i].user_id;
+        for (var i = 0; i < reservations.length; i++) {
+          var row = reservations[i].seat_row;
+          var column = reservations[i].seat_column;
+          var userID = reservations[i].user_id;
           var userName = app.users.get(userID).toJSON().name;
           $('#' + row + column).text(userName);
           $('#' + row + column).addClass('reserved');
@@ -81,9 +80,12 @@ app.ReservationView = Backbone.View.extend({
   deleteReservation: function(row, column, username) {
     // only allow delete if the current user made the booking
     if (username === app.currentUser.toJSON().name) {
-      // To figure out how to delete tomorrow
-      // Recall that reservations are stored in this.reservations
-      return
+      // reservations are stored in this.reservations
+      var reservation = this.reservations.findWhere({
+        seat_row: parseInt(row),
+        seat_column: column
+      });
+      // reservation stored correctly - now need to delete from server
     }
   }
 });
