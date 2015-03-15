@@ -5,6 +5,8 @@ var app = app || {};
 app.FlightView = Backbone.View.extend({
   el: '#main', // define the selector which this view is associated with
   render: function () {
+    clearInterval(app.refreshIntervalId);
+
     var flightViewHTML = $('#flightView-template').html();
     this.$el.html(flightViewHTML);
 
