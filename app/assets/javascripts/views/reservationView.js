@@ -18,7 +18,7 @@ app.ReservationView = Backbone.View.extend({
     var self = this
     setInterval(function(){
       self.render();
-    },2000);
+    },5000);
   },
 
   render: function () {
