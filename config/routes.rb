@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post '/search' => 'flights#search'
   get '/search' => 'flights#search_form'
 
+  get '/current_user' => 'session#current_user'
+
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

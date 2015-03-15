@@ -2,6 +2,10 @@ class SessionController < ApplicationController
   def new
   end
 
+  def current_user
+    render :json => User.find(session[:user_id])
+  end
+
   def create
   user = User.find_by :name => params[:name]
     if user.present? && user.authenticate(params[:password])

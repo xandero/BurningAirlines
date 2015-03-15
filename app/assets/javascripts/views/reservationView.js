@@ -6,7 +6,7 @@ app.ReservationView = Backbone.View.extend({
   el: '#main', // define the selector which this view is associated with
   
    events: {
-    'click': 'createReservation',
+    'click #airplane': 'toggleReservation',
   },
 
   initialize: function () {
@@ -22,19 +22,14 @@ app.ReservationView = Backbone.View.extend({
     this.reservations = new app.Reservations({flight_id: this.model.get('id')});
     this.airplane.fetch().done(function (airplane) { 
       self.airplane = airplane;
-      console.log(self.airplane);
       self.reservations.fetch().done(function (reservations) {
-        self.reservations = reservations;
-        console.log(self.airplane);
-        console.log(self.reservations);
 
         var rows = self.airplane.row;
         var columns = self.airplane.column;
         var reservationViewHTML = $('#reservationView-template').html();
         self.$el.html(reservationViewHTML);
         $('body').append(self.$el);
-        //self.$el.attr('id', 'reservation-view');
-        //$('#content').html(self.el);
+
         for (var i = 1; i <= rows; i++) {
           for (var j = 1; j <= columns; j++) {
             k = self.numToChar(j);
@@ -43,13 +38,13 @@ app.ReservationView = Backbone.View.extend({
           self.$el.find("#airplane").append("<br />");
 
         }
-        for (var i = 0; i < self.reservations.length; i++) {
-          var row = self.reservations[i].seat_row;
-          var column = self.reservations[i].seat_column;
-          var userID = self.reservations[i].user_id;
+        for (var i = 0; i < reservations.length; i++) {
+          var row = reservations[i].seat_row;
+          var column = reservations[i].seat_column;
+          var userID = reservations[i].user_id;
           var userName = app.users.get(userID).toJSON().name;
           $('#' + row + column).text(userName);
-          
+          $('#' + row + column).addClass('reserved');
         };
       });
     });
@@ -59,15 +54,41 @@ app.ReservationView = Backbone.View.extend({
     return String.fromCharCode(64 + n);
   },
 
-  createReservation: function (event) {
-      $(event.target).addClass("reserved");
-      var seat_id = $(event.target).text();
-      var row;//take cell ID, split, grab row
-      var column; //take cell ID,, split, grab column
-      // var newReservation = new app.Reservation({user_id: @current_user.id, flight_id: @current_flight.id, row: row, column: column});
-      // newReservation.save();
-      // app.reservations.add(newReservation);
+  toggleReservation: function (event) {
+    var row = $(event.target).attr('data-row');
+    var column = $(event.target).attr('data-column');  
+    
+    if ($(event.target).hasClass('reserved')) {
+      var username = $(event.target).text();
+      this.deleteReservation(row, column, username);
+    } else {
+      this.makeReservation(row, column);
+    }
   },
+
+  makeReservation: function (row, column) {
+    var newReservation = new app.Reservation({
+      user_id: app.currentUser.toJSON().id,
+      flight_id: this.model.get('id'),
+      seat_row: row,
+      seat_column: column
+    });
+    newReservation.save();
+    this.render();
+  },
+
+  deleteReservation: function(row, column, username) {
+    // only allow delete if the current user made the booking
+    if (username === app.currentUser.toJSON().name) {
+      // reservations are stored in this.reservations
+      var reservation = this.reservations.findWhere({
+        seat_row: parseInt(row),
+        seat_column: column
+      });
+      reservation.destroy({success: this.render()});
+      // reservation stored correctly - now need to delete from server
+    }
+  }
 });
 
 
