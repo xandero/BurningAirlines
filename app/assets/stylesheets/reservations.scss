@@ -4,14 +4,17 @@
 
 #airplane div {
   display: inline-block;
-  width: 100px;
+  width: 90px;
   height: 2em;
   border: 1px solid black;
-  background: green;
+  background: #1ABF0B;
   color: white;
+  text-align: center;
+  padding: 0.1em;
+  vertical-align: middle;
 }
 
 #airplane .reserved {
-  background: red;
+  background: #F0100C;
 }
 

@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>BurningAirlines</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-  <a href="/">Home</a>
-  <a href="/search">Search Flights</a>
+  <head>
+    <title>BurningAirlines</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+    <div id="navigation">
+      <a href="/"><img id="logo" src="http://img3.wikia.nocookie.net/__cb20120727112146/gta/pt/images/e/e8/Image_36371.jpg"></a>
+      <a href="/search">Search Flights</a>
 
-  <% @current_user = User.find_by :id => session[:user_id] %>
-  <% if @current_user.present? %>
-      <% if @current_user.is_admin %>
-        <%= link_to('Manage Fleet', airplanes_path) %>
-        <%= link_to('Manage Schedule', flights_path) %>  
+      <% @current_user = User.find_by :id => session[:user_id] %>
+      <% if @current_user.present? %>
+          <% if @current_user.is_admin %>
+            <%= link_to('Manage Fleet', airplanes_path) %>
+            <%= link_to('Manage Schedule', flights_path) %>  
+          <% end %>
+        <%= 'Logged in as ' + @current_user.name %>
+        <%= link_to('Logout', login_path, :method => :delete) %>
+      <% else %>
+        <%= link_to('Login', login_path) %>
       <% end %>
-    <%= 'Logged in as ' + @current_user.name %>
-    <%= link_to('Logout', login_path, :method => :delete) %>
-  <% else %>
-    <%= link_to('Login', login_path) %>
-  <% end %>
+    </div>
+  <body>
+   
+    <%= yield %>
 
-<body>
- 
-<%= yield %>
-
-</body>
+  </body>
+  <footer>
+    
+  </footer>
 </html>

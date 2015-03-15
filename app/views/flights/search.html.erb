@@ -1,17 +1,31 @@
 <% unless @flights == nil %>
-  <ol>
-    <% @flights.each do |flight| %>
-      <li data-flightID="<%= flight.id %>">
+
+  <% @flights.each do |flight| %>
+    <div data-flightID="<%= flight.id %>">
+      
       <% total_seats = flight.airplane.row * flight.airplane.column %>
       <% seats_available = total_seats - flight.reservations.count %>
 
-      <%= flight.origin %>
-      <%= flight.destination %>
-      <%= flight.date.strftime('%e %B %Y') %>
-      <%= seats_available %>
-
-      <%= link_to("Book Flight", "/#flights/#{flight.id}") %>
-      </li>
-    <% end %>
-  </ol>
+        <table class="search-results">
+          <tr>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Flight Number</th>
+            <th>Airplane</th>
+            <th>Seats Available</th>
+            <th>Wanna Plummet?</th>
+          </tr>
+          <tr>
+            <td><%= flight.origin %></td>
+            <td><%= flight.destination %></td>
+            <td><%= flight.date.strftime('%e %B %Y') %></td>
+            <td><%= flight.id %></td>
+            <td><%= flight.airplane.name %></td>
+            <td><%= seats_available %></td>
+            <td><%= link_to("Book Flight", "/#flights/#{flight.id}") %></td>
+          </tr>
+        </table>
+      </div>
+  <% end %>
 <% end %>

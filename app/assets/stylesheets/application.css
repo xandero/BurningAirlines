@@ -13,3 +13,47 @@
  *= require_tree .
  *= require_self
  */
+body {
+  font-family: sans-serif;
+  background-image: url(http://www.goodwp.com/images/201104/goodwp.com_17149.jpg);
+  padding-left: 5em;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+#navigation {
+  padding: 1em;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+#navigation a {
+  padding: 1em;
+  color: white;
+  text-decoration: none;
+}
+
+.search-results {
+  border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid white;
+    overflow: hidden;
+    width: 130px;
+    text-align: center;
+    padding: 0.4em;
+}
+
+#logo {
+  max-width: 130px;
+  width: auto;
+  height: auto;
+}
