@@ -1,0 +1,10 @@
+
+<%= form_tag search_path do %>
+  <%= label_tag :origin %>  
+  <%= text_field_tag :origin, params[:origin] %>
+  <%= label_tag :destination %>
+  <%= text_field_tag :destination, params[:destination] %>
+
+  <%= submit_tag 'Search flights' %>
+
+<% end %>

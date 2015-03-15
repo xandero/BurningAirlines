@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   resources :flights do
     resources :reservations
     get '/airplane' => 'airplanes#show_json'
+
   end
 
+  post '/search' => 'flights#search'
+  get '/search' => 'flights#search_form'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
