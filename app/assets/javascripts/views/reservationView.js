@@ -60,6 +60,11 @@ app.ReservationView = Backbone.View.extend({
   },
 
   toggleReservation: function (event) {
+    // Make sure that a user is logged in
+    if (app.currentUser.toJSON().id === undefined) {
+      return
+    }
+
     var row = $(event.target).attr('data-row');
     var column = $(event.target).attr('data-column');  
     
