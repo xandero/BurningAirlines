@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   post '/search' => 'flights#search'
   get '/search' => 'flights#search_form'
-  get '/search_results' => 'flights#search_results' 
 
   get '/current_user' => 'session#current_user'
 

@@ -1,0 +1,8 @@
+<% unless @flights == nil %>
+  <ol>
+    <% @flights.each do |flight| %>
+      <li data-flightID="<%= flight.id %>"><%= link_to("Book Flight", "/#flights/#{flight.id}") %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

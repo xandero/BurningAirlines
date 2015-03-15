@@ -20,11 +20,8 @@ class FlightsController < ApplicationController
     destination = params[:destination]
     
     @flights = find_flights(origin, destination)
-    redirect_to search_results_path
-  end
-
-  def search_results
     
+
   end
 
   # GET /flights/new
