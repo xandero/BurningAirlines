@@ -15,12 +15,16 @@ class FlightsController < ApplicationController
   def search_form
   end
 
-
   def search
     origin = params[:origin]
     destination = params[:destination]
     
     @flights = find_flights(origin, destination)
+    redirect_to search_results_path
+  end
+
+  def search_results
+    
   end
 
   # GET /flights/new
@@ -76,13 +80,7 @@ class FlightsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def find_flights(origin, destination)
-      
-      if origin && destination
-         @flights = Flight.where(:destination => destination) && Flight.where(:origin => origin)
-         render :json => @flights
-      else
-        "Sorry we have no flight that match those cities. Please search again."
-      end
+      @flights = Flight.where(:destination => destination) && Flight.where(:origin => origin)
     end
 
     def set_flight
