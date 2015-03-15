@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-  <a href="#">Home</a>
+  <a href="/">Home</a>
   <a href="/search">Search Flights</a>
 
   <% @current_user = User.find_by :id => session[:user_id] %>
